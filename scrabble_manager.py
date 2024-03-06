@@ -1,6 +1,6 @@
 """
 SCRABBLE MANAGER
-A program to help you to find best words at French Scrabble
+A program that helps you to cheat at French Scrabble
 Date: 5/3/2024
 Author: Simon Salvaing
 """
