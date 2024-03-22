@@ -7,10 +7,11 @@ Author: Simon Salvaing
 
 from pathlib import Path
 
-DICO = "french_dict_raw.txt"  # fichier avec tous les mots français non accentués
+DICO = "french_scrabble_dict.txt"  # fichier avec tous les mots français non accentués
 FRENCH_DICT_PATH = Path(__file__).parent / DICO
 with open(FRENCH_DICT_PATH, 'r', encoding='utf-8') as f:
     WORDS_LIST = [word for word in f.read().splitlines() if word.isascii()]
+QUITTER = "Q"
 
 def bienvenue():
     """Displays a welcome screen"""
@@ -24,10 +25,10 @@ def ask_letters() -> str:
     valid = False
     while not valid:
         print()
-        letters = input("Quel est votre tirage (7 lettres ou +) ? (q pour quitter) ").lower()
+        letters = input("Quel est votre tirage (7 lettres ou +) ? (Q pour quitter) ").upper()
         valid = (len(letters) >= 7 and all(
             [char.isalpha() and char.isascii() for char in letters]
-            )) or letters == 'q'
+            )) or letters == QUITTER
         if not valid:
             print("Saisie invalide. Inscrivez uniquement vos 7 lettres (ou +) sans espace ni accent.")
     return letters
@@ -46,7 +47,7 @@ def main():
 
         user_letters = ask_letters()
         
-        if user_letters == 'q':
+        if user_letters == QUITTER:
             end = True
             print("À bientôt ! 👍")
             break
