@@ -1,12 +1,13 @@
 """Global constants"""
 
+import typer
 from pathlib import Path
 
 # dictionary (.txt file) with all french accent-stripped words
 DICO = "french_scrabble_dict.txt"
 
 # dictionary path
-FRENCH_DICO_PATH = Path(__file__).parent.parent / DICO
+FRENCH_DICO_PATH = Path(__file__).parent.parent / "src" / DICO
 
 # words list
 with open(FRENCH_DICO_PATH, 'r', encoding='utf-8') as f:
@@ -14,3 +15,6 @@ with open(FRENCH_DICO_PATH, 'r', encoding='utf-8') as f:
 
 # keys for menu
 QUITTER = "Q"
+
+# SCRABBLE thumbs up
+SCRABBLE = typer.style("-> 🎉 SCRABBLE !!! 🎉", blink=True)

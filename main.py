@@ -1,11 +1,13 @@
 """
 SCRABBLE MANAGER
 A program that helps you to cheat at French Scrabble
-Date: 5/3/2024
+Date of 1st version: 5/3/2024
 Author: Simon Salvaing
 """
 
-from scrabble_manager.lib.GLOBALS import QUITTER, WORDS_LIST
+import typer
+
+from scrabble_manager.lib.GLOBALS import QUITTER, WORDS_LIST, SCRABBLE
 from scrabble_manager.lib.functions import (
     welcome, ask_letters, search_scrabbles, find_possible_words, search_word
     )
@@ -28,7 +30,9 @@ def main():
             print("Voici la liste de tous les mots possibles:")
             for i, word in enumerate(possible_words):
                 if len(word) >= 7:
-                    print(f"{word.capitalize()} -> 🎉 SCRABBLE !!! 🎉")
+                    print(typer.style(f"{word.upper()}",
+                                      fg=typer.colors.WHITE, 
+                                      bg=typer.colors.BLUE), SCRABBLE)
                 else:
                     print(f"{word.capitalize()}", end=" - " 
                           if i < len(possible_words) - 1 else "\n")      
